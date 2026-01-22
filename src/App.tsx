@@ -43,6 +43,14 @@ function App() {
       setScore((prev) => prev + 1);
     }
   };
+
+  const optionTone = (index: number) => {
+    if (!answered) return ''
+    if (index === currentQuestion.answer) return 'correct'
+    if(selectedIndex === index) return 'wrong'
+    return 'muted'
+  }
+
   return (
     <div className="app-shell">
       <header className="hero">
@@ -64,10 +72,26 @@ function App() {
               </p>
               <h2>{currentQuestion.title}</h2>
             </div>
+            <div className="hero-meta">
+              
+            </div>
             <span className="number">
               {currentQuestion.options.length} 択
             </span>
             <p className="prompt">{currentQuestion.prompt}</p>
+            <div className="options">
+              {currentQuestion.options.map((option, index) => (
+                <button className={`option ${optionTone(index)}`}
+                key={option}
+                onClick={() => handleSelect(index)}
+                aria-pressed={selectedIndex === index}>
+                  <span className="option-index">
+                    {String.fromCharCode(65 + index)}  
+                  </span>
+                  <span>{option}</span>
+                </button>
+              ))}
+            </div>
           </>
         )}
       </main>
