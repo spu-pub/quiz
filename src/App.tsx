@@ -21,6 +21,18 @@ const questions: QuizQuestion[] = [
     ],
     answer: 0,
     tip: '挨拶と名前'
+  },
+  {
+    id: 2,
+    title: 'おねがいするとき',
+    prompt: 'おねがいするとき、せんぱいにはどうおねがいする？',
+    options: [
+      '資料をちょうだい。',
+      'ちょうだい',
+      '資料をいただいてもよろしいでしょうか。'
+    ],
+    answer: 2,
+    tip: 'ていねいな伝え方'
   }
 ]
 
@@ -73,7 +85,10 @@ function App() {
               <h2>{currentQuestion.title}</h2>
             </div>
             <div className="hero-meta">
-              
+              <span>
+                {score} / {questions.length} Correct
+              </span>
+
             </div>
             <span className="number">
               {currentQuestion.options.length} 択
