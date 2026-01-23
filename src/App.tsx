@@ -55,7 +55,16 @@ function App() {
       setScore((prev) => prev + 1);
     }
   };
-
+  const goToNext = () => {
+    if(!answered) return
+    if(current === questions.length - 1) {
+      setShowResults(true);
+      return
+    }
+    setCurrent((prev) => prev + 1);
+    setSelectedIndex(null);
+    setAnswerd(false);
+  }
   const optionTone = (index: number) => {
     if (!answered) return ''
     if (index === currentQuestion.answer) return 'correct'
@@ -106,6 +115,11 @@ function App() {
                   <span>{option}</span>
                 </button>
               ))}
+            </div>
+            <div className="actions">
+              <button className="primary" onClick={goToNext} disabled={!answered}>
+                {current === questions.length - 1 ? 'Result':'Next'}
+              </button>
             </div>
           </>
         )}

@@ -82,3 +82,13 @@ body {
   justify-content: center;
 }
 
+.actions .primary {
+  background: #07cef1;
+  color: #fff;
+  margin-top: 20px;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
