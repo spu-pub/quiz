@@ -79,11 +79,16 @@ function App() {
         <p className="lede">
           Quiz
         </p>
+        <div className="progress-track">
+          <div className="progress-bar"
+          style={{width: `${progress}%`}}
+          aria-label={`進捗 ${progress}`}></div>
+        </div>
       </header>
       <main className="card">
         {showResults ? (
           <div className="results">
-            {score}
+            {score}問 正解
           </div>
         ) : (
           <>
@@ -97,7 +102,6 @@ function App() {
               <span>
                 {score} / {questions.length} Correct
               </span>
-
             </div>
             <span className="number">
               {currentQuestion.options.length} 択
